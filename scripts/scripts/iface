@@ -1,0 +1,31 @@
+#!/usr/bin/python
+
+from subprocess import Popen, PIPE
+from barutil import rgb, echo
+import re
+
+try:
+    iface = Popen(['ip', 'route'], stdout=PIPE).communicate()[0].decode('utf-8').split()[4]
+except:
+    exit()
+
+if open('/sys/class/net/{}/operstate'.format(iface)).read() == 'down\n':
+    echo('down', color=rgb(0))
+
+ipinfo = Popen(['ip', 'addr', 'show', iface], stdout=PIPE).communicate()[0].decode('utf-8')
+
+ip = re.search(r'inet ([.0-9]*)', ipinfo, flags=re.MULTILINE|re.DOTALL).group(1)
+
+if re.match(r'wl.*', iface) is not None:
+    link = Popen(['grep', iface, '/proc/net/wireless'], stdout=PIPE).communicate()[0].decode('utf-8').split()[2]
+    link = int(float(link)) * 10 // 7
+    con = '\uf1eb {}%'.format(link)
+else:
+    con = '\uf0c1'
+    link = 100
+
+status = '{}@{} {}'.format(ip, iface, con)
+color = link*5//3 - 24 if link >= 40 else 0
+
+echo(status, color=rgb(color))
+

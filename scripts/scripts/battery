@@ -1,0 +1,33 @@
+#!/usr/bin/python
+
+import re
+from subprocess import Popen, PIPE
+
+from barutil import rgb, echo
+
+acpi = Popen(['acpi', '-b'], stdout=PIPE).communicate()[0].decode('utf-8')
+
+stats = re.sub(r'\S* \S: (\S*), (\S*)%,?\s?(\S*)(.*?)',
+               r'\1 \2 \3',
+               acpi).split()
+
+status = stats[0]
+charge = stats[1]
+
+time = 'FULL' if len(stats) < 3 else stats[2]
+
+statusline = {'ac': '\uf1e6' if not status == 'Discharging' else '\uf0e7',
+              'charge': '{}%'.format(charge),
+              'bat': ['\uf244',
+                      '\uf243',
+                      '\uf242',
+                      '\uf241',
+                      '\uf240',
+                      '\uf240'][int(charge)//20],
+              'time': time}
+
+status_string = '{ac} {charge} {bat} {time}'.format(**statusline)
+color = rgb(int(charge))
+
+echo(status_string, color=color)
+

@@ -1,0 +1,21 @@
+mpd_host                   = "localhost"
+mpd_port                   = "6600"
+mpd_music_dir              = "~/Music"
+mpd_crossfade_time         = "1"
+visualizer_in_stereo       = "yes"
+visualizer_fifo_path       = "/tmp/mpd.fifo"
+visualizer_output_name     = "my_fifo"
+visualizer_sync_interval = "30"
+visualizer_type            = "spectrum" (spectrum/wave)
+visualizer_look = "◆▋"
+visualizer_color = "green"
+#visualizer_color = "blue, cyan"
+
+#progressbar_look = "─→─"
+progressbar_look = "▰◈─"
+song_list_format = "{$4%f$9}$R{$3%l$9}"
+song_columns_list_format = "(90)[magenta]{f} (10)[blue]{l}"
+selected_item_prefix = "$6"
+selected_item_suffix = "$9"
+
+#colors_enabled = "yes"

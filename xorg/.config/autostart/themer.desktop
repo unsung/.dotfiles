@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Theme Manager
+Comment=Makes URXVT Theme for Background
+Exec=zsh -c "$HOME/scripts/themer.sh $HOME/Pictures/Backgrounds/Kiwi.jpg"
+StartupNotify=false
+Terminal=false
+Hidden=false
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,25 @@
+!Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.autohint: true
+Xft.hintstyle: hintfull
+
+URxvt.font: xft:Envy Code R:pixelsize=12:style=regular,xft:Kochi Gothic:antialias=false,xft:WenQuanYi Zen Hei Sharp,xft:Baekmuk Gulim
+!URxvt.font:  xft:Terminess Powerline:pixelsize=13:antialias=true
+
+!URxvt*letterSpace: -2
+
+URxvt.depth: 32
+URxvt.background: [90]#222222
+URxvt*foreground: #B0C4DE
+
+URxvt.scrollstyle: plain
+
+URxvt.perl-ext-common: default,matcher,tabbed
+
+URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.matcher.button: 1
+
+!URxvt.inputMethod: ibus
+!URxvt.preeditType: OverTheSpot
