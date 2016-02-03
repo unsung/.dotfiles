@@ -42,8 +42,6 @@ setopt appendhistory
 
 alias nb="ipython notebook"
 
-alias pacsort="sudo reflector --country 'United States' -l 30 -n 20 -p http --sort rate --save /etc/pacman.d/mirrorlist"
-
 alias l="ls -A --color"
 alias ll="ls -lA --color"
 
