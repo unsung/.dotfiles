@@ -1,0 +1,10 @@
+#!/usr/bin/python
+
+from psutil import cpu_percent
+from barutil import rgb, echo
+
+load = cpu_percent(interval=1)
+
+#echo('\U0001f4bb {}%'.format(load))
+echo('\uf085 {}%'.format(load))
+print(rgb(100-load))

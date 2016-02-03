@@ -7,7 +7,8 @@ set t_Co=256
 syntax on
 filetype plugin indent on
 
-colorscheme molokai
+"colorscheme molokai
+hi Normal ctermbg=NONE
 
 autocmd FileType make setlocal noexpandtab
 

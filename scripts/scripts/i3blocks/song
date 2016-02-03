@@ -1,0 +1,65 @@
+#!/usr/bin/python
+
+from mpd import MPDClient, ConnectionError
+from re import sub
+
+from barutil import echo, rgb
+
+url = ('localhost', 6600)
+client = MPDClient()
+client.timeout = 10
+client.idletimeout = None
+client.connect(*url)
+
+def reconnect(fn):
+    def _fn(*args, **kwargs):
+        try:
+            return fn(*args, **kwargs)
+        except ConnectionError:
+            client.connect(*url)
+            return fn(*args, **kwargs)
+    return _fn
+
+@reconnect
+def currentsong():
+    file = client.currentsong()['file']
+    file = sub(r'(.*)\..*', r'\1', file)
+    return file
+
+@reconnect
+def completed():
+    time = client.status()['time']
+    c, t = time.split(':')
+    time = float(c)/float(t)
+    time = round(time*4)
+    return { 0: '\u25ef',
+             1: '\u25d4',
+             2: '\u25d1',
+             3: '\u25d5',
+             4: '\u25cf' }[time]
+
+@reconnect
+def state():
+    return client.status()['state']
+
+def icon():
+    return { 'play' : '\uf04b',
+             'pause': '\uf04c',
+             'stop' : '\uf04d'}[state()]
+
+def color():
+    return rgb({'play': 100,
+                'pause': 50,
+                'stop':   0}[state()])
+
+def output():
+    s = state()
+    ret = icon()
+
+    if s != 'stop':
+        ret += ' {} {}'.format(currentsong(), completed())
+
+    return ret
+    
+echo(output())
+print(color())

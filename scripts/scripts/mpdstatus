@@ -1,9 +1,0 @@
-#!/usr/bin/zsh
-
-song=$(mpc current|rev|cut -d. -f2-|rev)
-mpdstat=$(mpc status|cut -d$'\n' -f2|cut -d' ' -f1)
-if [ -n "$song" ]; then
-    echo "$mpdstat $song"
-else
-    echo "[stopped]"
-fi

@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+
+let "n = $(checkupdates | wc -l)"
+((n)) && notify-send "System update" "$n updates available."

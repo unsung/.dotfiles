@@ -14,7 +14,7 @@ visualizer_color = "green"
 #progressbar_look = "─→─"
 progressbar_look = "▰◈─"
 song_list_format = "{$4%f$9}$R{$3%l$9}"
-song_columns_list_format = "(90)[magenta]{f} (10)[blue]{l}"
+song_columns_list_format = "(90)[green]{f} (10)[blue]{l}"
 selected_item_prefix = "$6"
 selected_item_suffix = "$9"
 

@@ -31,15 +31,19 @@ font pango:Source Code Pro for Powerline, Kochi Gothic, WenQuanYi Zen Hei Sharp,
 floating_modifier $mod
 
 # Background
-#exec --no-startup-id ~/scripts/themer ~/Pictures/Backgrounds/Kiwi.jpg
-#exec --no-startup-id ~/scripts/themer ~/Pictures/Backgrounds/Choa\ Chicago.png
-exec --no-startup-id ~/scripts/themer ~/Pictures/Backgrounds/Ginko\ Flame.png
+#exec --no-startup-id ~/bin/themer ~/Pictures/Backgrounds/Kiwi.jpg
+#exec --no-startup-id ~/bin/themer ~/Pictures/Backgrounds/Choa\ Chicago.png
+#exec --no-startup-id ~/bin/themer ~/Pictures/Backgrounds/Ginko\ Flame.png
+exec --no-startup-id feh --bg-fill ~/Pictures/Backgrounds/Kiwi.jpg
 
 # Compton
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 
 # polkit
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# update list
+exec --no-startup-id ~/scripts/updates
 
 # gnome settings
 exec gnome-keyring-daemon
@@ -56,8 +60,17 @@ gaps inner 10
 gaps outer 10
 for_window [class="^.*"] border pixel 0
 
+new_window pixel
+
 # workaround for chrome
 for_window [class="Google-chrome" title="Google Chrome"] border none
+
+# float Steam
+for_window [class="Steam" title="Steam"] floating enable
+
+# float Hearthstone
+for_window [class="Wine" title="Battle.net.exe"] floating enable
+for_window [class="Wine" title="Hearthstone.exe"] floating enable
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal

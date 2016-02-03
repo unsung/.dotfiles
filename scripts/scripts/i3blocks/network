@@ -1,0 +1,29 @@
+#!/usr/bin/python
+
+import gi
+gi.require_version('NM', '1.0')
+from gi.repository import NM
+
+from barutil import echo, rgb
+
+client = NM.Client.new(None)
+state = client.get_state()
+
+if state != NM.State.CONNECTED_GLOBAL:
+    echo('\uf071')
+
+    print(rgb(0 if state != NM.State.CONNECTING else 50))
+
+else:
+    con = client.get_primary_connection()
+    out = con.get_id()
+
+    if con.get_connection_type() == '802-11-wireless':
+        sig = client.get_device_by_iface('wlp3s0').get_active_access_point().get_strength()
+        out += ' \uf1eb {}%'.format(sig)
+    else:
+        sig = 100
+        out += ' \uf0c1'
+
+    echo(out)
+    print(rgb(sig))

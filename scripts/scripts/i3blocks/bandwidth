@@ -1,0 +1,24 @@
+#!/usr/bin/python
+
+from time import sleep
+from math import log10
+from psutil import cpu_percent, net_io_counters
+from barutil import echo, rgb
+
+def netio():
+    return map(sum, zip(*((v[0], v[1])
+                          for k, v in net_io_counters(pernic=True).items()
+                              if k != 'lo')))
+
+def fmt(x):
+    suffix = ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s']
+    e = 0 if x == 0 else 3*int(log10(x)/3)
+    return '{:.0f}{}'.format(x*10**(-e), suffix[e//3])
+
+u0, d0 = netio()
+sleep(2)
+uf, df = netio()
+
+output = '\uf062 {} \uf063 {}'.format(*map(fmt, ((uf-u0)/16, (df-d0)/16)))
+
+echo(output)
