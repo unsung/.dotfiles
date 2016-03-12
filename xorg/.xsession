@@ -1,2 +1,0 @@
-ibus-daemon --xim
-

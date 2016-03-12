@@ -69,8 +69,8 @@ for_window [class="Google-chrome" title="Google Chrome"] border none
 for_window [class="Steam" title="Steam"] floating enable
 
 # float Hearthstone
-for_window [class="Wine" title="Battle.net.exe"] floating enable
-for_window [class="Wine" title="Hearthstone.exe"] floating enable
+for_window [class="Wine" title="Battle.net"] floating enable
+for_window [class="Wine" title="Hearthstone"] floating enable
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -124,16 +124,16 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+x floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+x focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus parent
 
 # focus the child container
-bindsym $mod+Shift+a focus child
+bindsym $mod+a focus child
 
 # tab through workspaces
 bindsym $mod+Tab workspace next
@@ -167,9 +167,14 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+grave scratchpad show
 
-# launch chrome
-bindsym $mod+g exec "google-chrome-stable"
-bindsym $mod+Shift+g exec "google-chrome-stable --incognito"
+# launch browser
+#bindsym $mod+g exec "google-chrome-stable"
+#bindsym $mod+Shift+g exec "google-chrome-stable --incognito"
+bindsym $mod+space exec "firefox"
+bindsym $mod+Shift+space exec "firefox --private-window"
+
+# take screenshot
+bindsym Print exec "~/bin/screenshot"
 
 # launch nemo
 bindsym $mod+n exec "nemo --no-desktop"
@@ -179,6 +184,9 @@ bindsym XF86AudioPlay exec "mpc toggle"
 bindsym XF86AudioNext exec "mpc next"
 bindsym XF86AudioPrev exec "mpc prev"
 bindsym XF86AudioStop exec "mpc stop"
+
+# touchpad toggle
+bindsym XF86TouchpadToggle exec "~/bin/touchpadtoggle"
 
 # volume
 #bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"

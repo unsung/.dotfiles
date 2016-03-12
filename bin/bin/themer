@@ -6,4 +6,3 @@ bgpath=${1:-$randbg}
 nitrogen --set-scaled --save "$bgpath"
 $GOPATH/bin/schemer2 --format img::urxvt -in "$bgpath" -out $HOME/.Xresources
 
-xrdb -merge $HOME/.Xresources

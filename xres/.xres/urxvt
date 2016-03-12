@@ -1,0 +1,33 @@
+!URxvt.font: \
+!    -misc-roboto mono-medium-r-normal--12-*-*-*-*-*-iso8859-1
+
+URxvt.font: \
+    xft:Roboto Mono:pixelsize=12:style=regular:antialias=false
+
+!URxvt.font: \
+!    xft:Roboto Mono:pixelsize=12:style=regular,\
+!    xft:Kochi Gothic,\
+!    xft:WenQuanYi Zen Hei Sharp,\
+!    xft:Baekmuk Gulim
+
+!URxvt.font: xft:Envy Code R:pixelsize=12:style=regular,xft:Kochi Gothic:antialias=false,xft:WenQuanYi Zen Hei Sharp,xft:Baekmuk Gulim
+!URxvt.font:  xft:Terminess Powerline:pixelsize=13:antialias=true
+
+URxvt.buffered: false
+
+!URxvt*letterSpace: -1
+
+!URxvt.depth: 32
+
+URxvt.scrollstyle: plain
+
+URxvt.perl-ext-common: default,matcher
+
+!URxvt.url-launcher: /usr/bin/google-chrome-stable
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+!URxvt.inputMethod: ibus
+!URxvt.preeditType: OverTheSpot
+
+URxvt.saveLines: 2000

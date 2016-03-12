@@ -7,11 +7,16 @@ set t_Co=256
 syntax on
 filetype plugin indent on
 
-"colorscheme molokai
+if has("gui_running")
+    colorscheme molokai
+endif
+
 hi Normal ctermbg=NONE
+hi Folded ctermbg=NONE
 
 autocmd FileType make setlocal noexpandtab
 
+set mouse=a
 
 set number
 set cul
