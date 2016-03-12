@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # vim:fdm=marker
 #
-# Fetch config file
-# https://github.com/dylanaraps/fetch
+# Neofetch config file
+# https://github.com/dylanaraps/neofetch
 
 # Speed up script by not using unicode
 export LC_ALL=C
@@ -14,10 +14,8 @@ export LANGUAGE=C
 
 # Info
 # See this wiki page for more info:
-# https://github.com/dylanaraps/fetch/wiki/Customizing-Info
+# https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 printinfo () {
-    info linebreak
-
     info title
     info underline
 
@@ -26,23 +24,27 @@ printinfo () {
     info "Uptime" uptime
     info "Packages" packages
     info "Shell" shell
-    info "Window Manager" windowmanager
-    info "GTK Theme" gtktheme
-    info "Icons" gtkicons
+    info "Resolution" resolution
+    info "Desktop Environment" de
+    info "Window Manager" wm
+    info "Theme" theme
+    info "Icons" icons
     info "CPU" cpu
     info "GPU" gpu
     info "Memory" memory
 
-    # info "Font" gtkfont
+    # info "Font" font
     # info "Disk" disk
-    # info "Resolution" resolution
     # info "Battery" battery
+    # info "Local IP" localip
+    # info "Public IP" publicip
+    # info "Users" users
     # info "Birthday" birthday
     # info "Song" song
-    # info "Visual Style" visualstyle
 
     info linebreak
     info cols
+    info linebreak
     info linebreak
 }
 
@@ -91,12 +93,17 @@ shell_version="off"
 # scaling_current, scaling_min, scaling_max
 speed_type="max"
 
+# CPU shorthand
+# Decice to show name only, speed only, or short info
+# --cpu_shorthand name, speed, tiny, on, off
+cpu_shorthand="off"
+
 
 # GPU
 
 # Shorten output of the getgpu funcion
-# --gpu_shorthand on/off
-gpu_shorthand="off"
+# --gpu_shorthand on/off/tiny
+gpu_shorthand="on"
 
 
 # Gtk Theme / Icons
@@ -130,6 +137,20 @@ battery_num="all"
 battery_shorthand="off"
 
 
+# IP Address
+
+# Website to ping for the public IP
+# --ip_host url
+public_ip_host="http://ident.me"
+
+
+# Song
+
+# Print the Artist and Title on seperate lines
+# --song_shorthand on/off
+song_shorthand="off"
+
+
 # Birthday
 
 # Whether to show a long pretty output
@@ -141,6 +162,11 @@ birthday_shorthand="off"
 # Whether to show the time in the output
 # --birthday_time on/off
 birthday_time="on"
+
+# Date format to use when printing birthday
+# --birthday_format "format"
+birthday_format="+%a %d %b %Y %l:%M %p"
+
 
 # Color Blocks
 
@@ -163,24 +189,12 @@ block_width=3
 # Text Colors {{{
 
 
-# --title_color num
-title_color=4
-
-# Color of "@" symbol in title
-# --at_color num
-at_color=6
-
-# --subtitle_color num
-subtitle_color=1
-
-# --colon_color num
-colon_color=8
-
-# --underline_color num
-underline_color=8
-
-# --info_color num
-info_color=6
+# Text Colors
+# Each number represents a different part of
+# the text in this order:
+# title, @, underline, subtitle, colon, info
+# colors=(4 6 1 8 8 6)
+colors=(distro)
 
 
 # }}}
@@ -218,11 +232,10 @@ prompt_height=1
 
 # Image Source
 # --image wall, shuffle, ascii, /path/to/img, off
-#image="$HOME/Pictures/Choa Chicago.png"
-image="wall"
+image="ascii"
 
 # Thumbnail directory
-thumbnail_dir="$HOME/.cache/thumbnails/fetch"
+thumbnail_dir="$HOME/.cache/thumbnails/neofetch"
 
 # Image Backend
 # Which program to draw images with
@@ -239,7 +252,7 @@ w3m_img_path="/usr/lib/w3m/w3mimgdisplay"
 image_position="left"
 
 # Shuffle dir
-shuffle_dir="$HOME/Pictures/Backgrounds"
+shuffle_dir="$HOME/Pictures/wallpapers/wash"
 
 # Crop mode
 # --crop_mode normal/fit/fill
@@ -251,25 +264,20 @@ crop_mode="normal"
 #               east/southwest/south/southeast
 crop_offset="center"
 
-# Font width
-# --font_width num
-# Used when calculating dynamic image size
-font_width=5
-
 # Image size
 # The image is half the terminal width by default.
-# --size half, px
-image_size="half"
+# --size auto, 00px, 00%
+image_size="auto"
 
 # Right gap between image and text
 # --gap num
-gap=5
+gap=2
 
 # Image offsets
 # --xoffset px
 # --yoffset px
-yoffset=10
-xoffset=10
+yoffset=0
+xoffset=0
 
 
 # }}}
@@ -292,6 +300,12 @@ ascii="distro"
 # --ascii_colors 2 4 5 6
 ascii_colors=(distro)
 
+# Logo size
+# Arch, Crux and Gentoo have a smaller logo
+# variant. Changing the value below to small
+# will make neofetch use the small logo.
+# --ascii_logo_size small, normal
+ascii_logo_size="normal"
 
 # }}}
 
@@ -314,8 +328,16 @@ scrot_dir="$HOME/Pictures"
 # Scrot filename
 # What to name the screenshots
 # --scrot_name str
-scrot_name="fetch-%Y-%m-%d-%H:%M.png"
+scrot_name="neofetch-%Y-%m-%d-%H:%M.png"
 
+
+# }}}
+
+# Stdout options {{{
+
+# Separator for stdout mode
+# --stdout_separator string
+stdout_separator="  "
 
 # }}}
 
@@ -328,23 +350,7 @@ config="on"
 
 # Path to custom config file location
 # --config path/to/config
-config_file="$HOME/.config/fetch/config"
+config_file="$HOME/.config/neofetch/config"
 
-
-# }}}
-
-# Other Options {{{
-
-# Separator to use in stdout mode.
-# --stdout_separator string
-stdout_separator="    "
-
-# Hide/Show the title in stdout mode.
-# --stdout_title on/off
-stdout_title="off"
-
-# Hide/Show each info's subtitle in stdout mode.
-# --stdout_subtitles on/off
-stdout_subtitles="on"
 
 # }}}
