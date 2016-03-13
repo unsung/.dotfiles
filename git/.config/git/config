@@ -1,0 +1,8 @@
+[include]
+    path = user
+[core]
+	editor = vim
+[push]
+	default = upstream
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit

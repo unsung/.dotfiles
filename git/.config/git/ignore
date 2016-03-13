@@ -1,0 +1,31 @@
+# Vim temporary files
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Compiled outputs
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Dumb Mac and Windows files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Ignore logs
+*.log
