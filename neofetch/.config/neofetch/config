@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 # vim:fdm=marker
-#
-# Neofetch config file
-# https://github.com/dylanaraps/neofetch
 
 # Speed up script by not using unicode
 export LC_ALL=C
@@ -232,7 +229,7 @@ prompt_height=1
 
 # Image Source
 # --image wall, shuffle, ascii, /path/to/img, off
-image="ascii"
+image="$HOME/Pictures/Backgrounds/Nani.png"
 
 # Thumbnail directory
 thumbnail_dir="$HOME/.cache/thumbnails/neofetch"
@@ -252,7 +249,7 @@ w3m_img_path="/usr/lib/w3m/w3mimgdisplay"
 image_position="left"
 
 # Shuffle dir
-shuffle_dir="$HOME/Pictures/wallpapers/wash"
+shuffle_dir="$HOME/Pictures/Backgrounds"
 
 # Crop mode
 # --crop_mode normal/fit/fill

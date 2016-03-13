@@ -1,8 +1,5 @@
-!URxvt.font: \
-!    -misc-roboto mono-medium-r-normal--12-*-*-*-*-*-iso8859-1
-
 URxvt.font: \
-    xft:Roboto Mono:pixelsize=12:style=regular:antialias=false
+    -misc-envy code r-medium-r-normal--14-*-*-*-*-*-iso8859-1
 
 !URxvt.font: \
 !    xft:Roboto Mono:pixelsize=12:style=regular,\
