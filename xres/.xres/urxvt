@@ -1,5 +1,10 @@
+!URxvt.font: \
+!    -misc-envy code r-medium-r-normal--12-*-*-*-*-*-iso8859-1
+
 URxvt.font: \
-    -misc-envy code r-medium-r-normal--14-*-*-*-*-*-iso8859-1
+    xft:Roboto Mono-10,\
+    xft:Source\ Code\ Pro\ for\ Powerline-10
+    xft:WenQuanYi\ Zen\ Hei\ Mono-10
 
 !URxvt.font: \
 !    xft:Roboto Mono:pixelsize=12:style=regular,\

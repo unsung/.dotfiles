@@ -1,0 +1,41 @@
+zstyle ':prezto:load' zmodule 'attr' 'stat'
+zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'pacman' \
+  'syntax-highlighting' \
+  'prompt'
+
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+zstyle ':prezto:module:pacman' frontend 'pacaur'
+
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'git' 'aur'
+
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+   'main' \
+   'brackets' \
+   'pattern' \
+   'line' \
+   'cursor' \
+   'root'
+
+zstyle ':prezto:module:syntax-highlighting' styles \
+   'builtin' 'bg=blue' \
+   'function' 'bg=blue' \
+   'cursor' 'bg=white'
+
+zstyle ':prezto:module:terminal' auto-title 'yes'
+
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+

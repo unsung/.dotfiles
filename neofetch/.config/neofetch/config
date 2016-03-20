@@ -229,7 +229,8 @@ prompt_height=1
 
 # Image Source
 # --image wall, shuffle, ascii, /path/to/img, off
-image="$HOME/Pictures/Backgrounds/Nani.png"
+#image="$HOME/Pictures/Backgrounds/Nani.png"
+image="ascii"
 
 # Thumbnail directory
 thumbnail_dir="$HOME/.cache/thumbnails/neofetch"
